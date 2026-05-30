@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>記事制作 勝ち理由言語化ワーク 抽象化フォーマット</title>
+  <style>
+    :root {
+      --bg: #f5f6f8;
+      --paper: #ffffff;
+      --ink: #23262d;
+      --muted: #68707d;
+      --line: #dfe4ea;
+      --accent: #0f766e;
+      --accent-soft: #e8f5f3;
+      --warn: #b7791f;
+      --warn-soft: #fff7e6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.8;
+      letter-spacing: 0;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 40px 24px 72px;
+    }
+
+    header,
+    section {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    header {
+      padding: 36px 40px;
+    }
+
+    section {
+      margin-top: 24px;
+      padding: 32px 40px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 32px;
+      line-height: 1.35;
+    }
+
+    h2 {
+      margin: 0 0 20px;
+      padding-left: 14px;
+      border-left: 5px solid var(--accent);
+      font-size: 24px;
+      line-height: 1.45;
+    }
+
+    h3 {
+      margin: 28px 0 10px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    ul,
+    ol {
+      margin: 10px 0 18px;
+      padding-left: 1.4em;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    code,
+    pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    }
+
+    pre {
+      overflow-x: auto;
+      margin: 14px 0 0;
+      padding: 18px;
+      border-radius: 8px;
+      background: #111827;
+      color: #f9fafb;
+      font-size: 13px;
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: var(--accent-soft);
+      color: #075a54;
+      white-space: nowrap;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #075a54;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .card {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfd;
+    }
+
+    .card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #075a54;
+      font-size: 15px;
+    }
+
+    .note {
+      padding: 16px 18px;
+      border-radius: 8px;
+      border: 1px solid #f0d8a8;
+      background: var(--warn-soft);
+      color: #6f4b10;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 16px;
+    }
+
+    .checklist li {
+      margin: 10px 0;
+    }
+
+    @media (max-width: 820px) {
+      .page {
+        padding: 20px 12px 48px;
+      }
+
+      header,
+      section {
+        padding: 24px 18px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      h2 {
+        font-size: 21px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <h1>記事制作 勝ち理由言語化ワーク 抽象化フォーマット</h1>
+      <p class="lead">TCB二重術記事の棚卸しを、トッププレイヤー個人の暗黙知で終わらせず、記事制作者が制作時に使える思考フレームとAI投入フォーマットに変換した資料。</p>
+      <div class="tag-row">
+        <span class="tag">制作判断</span>
+        <span class="tag">勝ち理由言語化</span>
+        <span class="tag">記事部ナレッジ</span>
+        <span class="tag">AI入力フォーマット</span>
+      </div>
+    </header>
+
+    <section>
+      <h2>結論</h2>
+      <p>売れている記事の言語化で見るべきものは、表面的なデザインやコピーではなく、「なぜその判断をしたか」「どの心理をどの順番で動かしたか」「市場に対して何を残し、何をズラしたか」である。</p>
+      <p>記事制作者は、制作前・制作中・制作後に次の5点を必ず考える。</p>
+      <div class="grid">
+        <div class="card">
+          <strong>1. 市場差分</strong>
+          競合や上位記事と比べて、どこで第一想起を取るのか。
+        </div>
+        <div class="card">
+          <strong>2. CV地点の重さ</strong>
+          LINE追加、予約、購入など、着地点の重さに対して教育量は足りているか。
+        </div>
+        <div class="card">
+          <strong>3. 心理変化の順番</strong>
+          悩み認識、期待、不安払拭、信頼、行動の順番が崩れていないか。
+        </div>
+        <div class="card">
+          <strong>4. 勝ち筋の保存</strong>
+          過去に売れたコピー・オファー・素材を、どこまで残すか。
+        </div>
+        <div class="card">
+          <strong>5. 横展開の精度</strong>
+          型を真似るのではなく、型が生む心理効果を商材に合わせて再設計できているか。
+        </div>
+        <div class="card">
+          <strong>6. 行動直前の不透明さ</strong>
+          ボタンを押した後、何が起きるかを読者が想像できているか。
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>1. 記事制作者が制作時に考えるべきポイント</h2>
+
+      <h3>1-1. 制作判断は「勝っている型」ではなく「市場差分」から考える</h3>
+      <p>他市場で勝っている型を見つけた時、最初に考えるべきことは「その型が良いか」ではなく、「自分の市場に持ち込んだ時に差分になるか」。</p>
+      <p>今回で言えば、カード回答型アンケートはジュノビューティークリニックでは既に配信されていたが、二重市場ではまだユニークだった。だから採用価値があった。</p>
+      <ul>
+        <li>その型は、自市場の上位記事と比べて見た目・体験・導入が違うか。</li>
+        <li>競合がまだ使っていないのに、他市場で継続配信されている根拠があるか。</li>
+        <li>新規性だけでなく、読者心理を前に進める機能があるか。</li>
+      </ul>
+
+      <h3>1-2. CV地点の重さに合わせて、教育量を調整する</h3>
+      <p>同じ型でも、CV地点が違えば必要な教育量は変わる。LINE友だち追加なら短い診断風でも進む可能性があるが、無料カウンセリング予約、購入、来院予約などは心理的ハードルが高い。</p>
+      <p>そのため、型を横展開する時は、元記事の着地点と今回の着地点を必ず比較する。</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>CV地点</th>
+              <th>読者の心理ハードル</th>
+              <th>必要な教育</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>LINE追加</td>
+              <td>比較的軽い</td>
+              <td>興味喚起、特典、簡単さ、損失回避。</td>
+            </tr>
+            <tr>
+              <td>無料カウンセリング予約</td>
+              <td>中程度から高い</td>
+              <td>効果実証、不安払拭、料金不安、予約後の流れ、クリニック信頼。</td>
+            </tr>
+            <tr>
+              <td>購入・申込</td>
+              <td>高い</td>
+              <td>必要性、比較優位、返金/保証、使用手順、口コミ、価格妥当性。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>1-3. 型はUIではなく、心理効果で捉える</h3>
+      <p>カードをめくる、診断する、ランキングにする、漫画にする、比較表にする。これらはすべて表現手段であって、本質ではない。</p>
+      <p>制作者が見るべきは、その型が読者にどんな心理変化を起こしているか。</p>
+      <ul>
+        <li>カードをめくる：自分で選び、答えを見た感覚を作る。</li>
+        <li>診断：自分ごと化と納得感を作る。</li>
+        <li>ランキング：比較の手間を減らし、選ぶ理由を作る。</li>
+        <li>漫画：状況共感と読み進める摩擦の低さを作る。</li>
+        <li>比較表：不安や迷いを整理し、判断を早める。</li>
+      </ul>
+
+      <h3>1-4. コピーは「新しさ」より「勝ち筋の保存」を優先する場面がある</h3>
+      <p>フォーマットやデザインで市場差分が取れている場合、コピーまで大きく変えすぎると、勝っていた訴求を壊すリスクがある。</p>
+      <p>今回のように、見せ方で新規性を作れる場合は、コピーは過去の勝ち訴求を安定して載せる判断が有効。</p>
+      <ul>
+        <li>読者が既に反応しているベネフィットは何か。</li>
+        <li>広告で反応率が良いBA・モデル・言い回しは何か。</li>
+        <li>上位記事で共通しているオファー表現は何か。</li>
+        <li>変えるべきはコピーなのか、見せ方なのか。</li>
+      </ul>
+
+      <h3>1-5. 不安払拭は、機能不安と感情不安を分ける</h3>
+      <p>読者の不安は、機能的な不安だけではない。美容医療であれば「痛いのか」「不自然にならないか」だけでなく、「押し売りされるのでは」「高額請求されるのでは」「自分だけ失敗するのでは」という感情不安がある。</p>
+      <p>売れる記事は、機能不安と感情不安の両方を潰している。</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>不安の種類</th>
+              <th>例</th>
+              <th>記事での潰し方</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>機能不安</td>
+              <td>痛み、ダウンタイム、効果、持続性</td>
+              <td>BA、比較、数値、素材説明、保証。</td>
+            </tr>
+            <tr>
+              <td>料金不安</td>
+              <td>追加料金、高額請求、総額不明</td>
+              <td>同意のない追加料金なし、無料項目、価格表現。</td>
+            </tr>
+            <tr>
+              <td>感情不安</td>
+              <td>押し売り、騙される、恥ずかしい、怖い</td>
+              <td>カウンセリング風景、スタッフの表情、手順説明、FAQ。</td>
+            </tr>
+            <tr>
+              <td>行動不安</td>
+              <td>押した後に何が起きるかわからない</td>
+              <td>遷移後のチャットボットLPの流れ、予約手順、入力イメージ。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>2. 売れている理由を言語化する時の共通フレーム</h2>
+      <p>今後、売れている記事を分解する時は、以下の順番で棚卸しする。</p>
+      <ol class="checklist">
+        <li><strong>制作判断：</strong>なぜこの商材・市場・ターゲット・型を選んだのか。</li>
+        <li><strong>参照元：</strong>どの記事、市場、広告、CR、過去実績から何を引用したのか。</li>
+        <li><strong>市場差分：</strong>上位記事と比べて、どこがユニークなのか。</li>
+        <li><strong>CV地点：</strong>着地点は何か。元記事や参照元と比べて重いか軽いか。</li>
+        <li><strong>大枠構造：</strong>型、デザイン、コピーの方針を分けて説明する。</li>
+        <li><strong>心理導線：</strong>読者の心理を、どの順番で動かしているか。</li>
+        <li><strong>パート別役割：</strong>FV、導入、教育、CTA、FAQ、最終クロージングごとの役割を言語化する。</li>
+        <li><strong>不安払拭：</strong>機能不安、料金不安、感情不安、行動不安をどこで潰しているか。</li>
+        <li><strong>横展開条件：</strong>他商材へ展開する時に残すもの、変えるものを分ける。</li>
+        <li><strong>次回制作ルール：</strong>この分析から、次の記事制作で必ず見るチェック項目に変換する。</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>3. AIに投げる前提の入力フォーマット</h2>
+      <p>メンバーが音声や箇条書きで話した内容をAIに整理させる時は、以下のフォーマットを使う。</p>
+      <pre>あなたは記事LPの制作判断を言語化する編集者です。
+以下は、売れている記事について制作者が話した音声メモです。
+内容を、個別記事の説明で終わらせず、今後の記事制作者が再現できる思考フレームに抽象化してください。
+
+## 出力してほしい形式
+
+1. 制作判断
+- なぜこの商材・市場・ターゲット・型を選んだのか
+- 参照した市場/競合/過去勝ち記事/広告/CR
+- 元ネタと今回の記事でCV地点や商材特性がどう違うか
+- その違いに対して何を足した/削った/変えたか
+
+2. 中の構造の大枠
+- 型：どんな記事構造か。読者にどんな心理効果を起こす型か
+- デザイン：市場上位と比べて何を揃え、何を差別化したか
+- コピー：過去勝ち訴求を残したのか、新規訴求を作ったのか。その理由
+
+3. パートごとの詳細解説
+各パートについて、以下の4点で整理してください。
+- そのパートで見せている内容
+- 読者心理に対する役割
+- 売れている理由
+- 横展開時に真似るべき点/変えるべき点
+
+対象パート：
+- FV
+- 導入/アンケート/診断
+- 最初のCTA
+- 共感
+- 解決策紹介
+- 効果実証
+- 不安払拭
+- 社会的証明
+- 予約/申込手順
+- FAQ
+- 遷移後の行動イメージ
+- 最終ベネフィット
+- 限定性/損失回避
+
+4. 抽象化
+この分析から、今後の記事制作者が制作時に考えるべきポイントを10個にまとめてください。
+表面的なUIや文言ではなく、制作判断・読者心理・CV地点・市場差分・不安払拭の観点で抽象化してください。
+
+5. チェックリスト化
+次回制作時に使えるチェックリストにしてください。
+「はい/いいえ」で確認できる粒度にしてください。
+
+## 音声メモ/箇条書き
+ここに制作者の発話を貼る。</pre>
+    </section>
+
+    <section>
+      <h2>4. メンバー用の話す順番フォーマット</h2>
+      <p>音声でバラバラに話すとAIが整理しづらくなるため、メンバーには以下の順で話してもらう。</p>
+      <pre>## 1. 制作判断
+この記事は何の商材か：
+ターゲットは誰か：
+なぜこの型を採用したか：
+何を参考にしたか：
+参考元と今回で違う点は何か：
+その違いに対して何を変えたか：
+
+## 2. 大枠構造
+型の方針：
+デザインの方針：
+コピーの方針：
+市場上位と揃えた点：
+市場上位とズラした点：
+
+## 3. FV
+モデル/素材を選んだ理由：
+BAを選んだ理由：
+オファーの見せ方：
+USPを選んだ理由：
+FVで払拭したい不安：
+
+## 4. 導入/アンケート/診断
+質問の順番：
+各質問で読者に起こしたい心理変化：
+表面と裏面の役割：
+進捗バー/演出/UXの狙い：
+
+## 5. CTA
+このタイミングでCTAを置いた理由：
+見せたオファー：
+まだ残っている不安：
+その後に教育を足した理由：
+
+## 6. 教育パート
+共感で見せたこと：
+効果実証で見せたこと：
+不安払拭で見せたこと：
+料金不安をどう潰したか：
+感情不安をどう潰したか：
+社会的証明で見せたこと：
+予約手順/遷移後イメージで見せたこと：
+最後のベネフィット/限定性：
+
+## 7. 横展開
+他商材でも残すべき要素：
+商材によって変えるべき要素：
+次に作る人への注意点：</pre>
+    </section>
+
+    <section>
+      <h2>5. 次回制作時のチェックリスト</h2>
+      <ul class="checklist">
+        <li>自市場の上位記事と比べて、第一想起を取れる差分があるか。</li>
+        <li>参考元のCV地点と、今回のCV地点の重さの違いを確認したか。</li>
+        <li>CV地点が重い場合、後半教育を足しているか。</li>
+        <li>型のUIではなく、その型が生む心理効果を言語化できているか。</li>
+        <li>広告や過去勝ち記事で反応している素材・BA・モデルを確認したか。</li>
+        <li>コピーまで変えすぎて、既存の勝ち訴求を壊していないか。</li>
+        <li>機能不安、料金不安、感情不安、行動不安を分けて潰しているか。</li>
+        <li>CTA前に、読者が行動する理由を十分に作れているか。</li>
+        <li>ボタンを押した後の画面や手順を読者が想像できるか。</li>
+        <li>最後に、読者が本当に欲しい未来像と、今動く理由を提示しているか。</li>
+      </ul>
+      <div class="note">
+        このチェックリストは、記事完成後のレビューだけでなく、制作前の設計段階で使う。制作後に当てはめるより、制作前に未決定箇所を潰す方が手戻りが少ない。
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -3,12 +3,118 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="refresh" content="0; url=TCB%E4%BA%8C%E9%87%8D%E8%A1%93_%E5%A3%B2%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E7%90%86%E7%94%B1%E3%81%BE%E3%81%A8%E3%82%81.html">
-  <title>TCB二重術 記事が売れている理由まとめ</title>
+  <title>記事制作ナレッジ</title>
+  <style>
+    :root {
+      --bg: #f5f6f8;
+      --paper: #ffffff;
+      --ink: #23262d;
+      --muted: #667085;
+      --line: #dfe4ea;
+      --accent: #0f766e;
+      --accent-soft: #e8f5f3;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.75;
+      letter-spacing: 0;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 56px 24px;
+    }
+
+    header {
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+      line-height: 1.35;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .list {
+      display: grid;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    a.card {
+      display: block;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      color: inherit;
+      text-decoration: none;
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    a.card:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      margin-bottom: 14px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #075a54;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      line-height: 1.45;
+    }
+
+    .card p {
+      font-size: 15px;
+    }
+  </style>
 </head>
 <body>
-  <p>
-    <a href="TCB二重術_売れている理由まとめ.html">TCB二重術 記事が売れている理由まとめ</a>
-  </p>
+  <main>
+    <header>
+      <h1>記事制作ナレッジ</h1>
+      <p>売れている記事の分解と、制作時に使う抽象化フォーマット。</p>
+    </header>
+
+    <div class="list">
+      <a class="card" href="TCB二重術_売れている理由まとめ.html">
+        <span class="label">個別記事分析</span>
+        <h2>TCB二重術 記事が売れている理由まとめ</h2>
+        <p>制作判断、記事構造、FV、アンケート、教育パート、CTAまでの勝ち理由をパート別に整理。</p>
+      </a>
+
+      <a class="card" href="記事制作_勝ち理由言語化ワーク_抽象化フォーマット.html">
+        <span class="label">抽象化フォーマット</span>
+        <h2>記事制作 勝ち理由言語化ワーク</h2>
+        <p>トッププレイヤーの思考を、今後の記事制作者が制作時に見るべきポイントとAI投入フォーマットに変換。</p>
+      </a>
+    </div>
+  </main>
 </body>
 </html>
